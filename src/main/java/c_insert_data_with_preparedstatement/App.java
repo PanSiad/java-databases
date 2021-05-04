@@ -28,7 +28,10 @@ public class App {
 
     private static User readInputFromUser() {
 
-        return new User("Giwrgos", "papadopoulos'), (5,'GEORGE','MIKE'); -- ");
+        String name = "Giwrgos";
+        String lastName = "papadopoulos'), (5,'GEORGE','MIKE'); -- ";
+        return new User(name, lastName);
+
     }
 
     static class User {
