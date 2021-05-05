@@ -2,10 +2,14 @@ package jpa_exercise;
 
 import jpa_exercise.model.Address;
 import jpa_exercise.model.Product;
+import jpa_exercise.utils.Util;
 
 public class App {
 
     public static void main(String[] args) {
+        //TODO create entityManagerFactory from the Exercise Persistence Unit
+        //TODO create entityManage
+
         Util.createTablesForExercise();
 
         Address address = new Address();
@@ -21,8 +25,8 @@ public class App {
         Product book = new Product();
         book.setName("book");
         book.setDescription("a beautiful book");
-        //TODO save the book
 
+        //TODO save the book
 
         //TODO create a new order with the address and the products
 

@@ -1,4 +1,4 @@
-package jpa_exercise;
+package jpa_exercise.utils;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -47,14 +47,6 @@ public class Util {
 
             stmt.executeUpdate(sql);
 
-            sql = "CREATE TABLE PRODUCTS_EX " +
-                    "(id INTEGER not NULL AUTO_INCREMENT, " +
-                    " name VARCHAR(255), " +
-                    " description  VARCHAR(255) , " +
-                    " PRIMARY KEY ( id ))";
-
-            stmt.executeUpdate(sql);
-
             sql = "CREATE TABLE ORDERS_EX " +
                     "(id INTEGER not NULL AUTO_INCREMENT, " +
                     " order_date date, " +
@@ -62,6 +54,17 @@ public class Util {
                     " address_id  INTEGER , " +
                     " PRIMARY KEY ( id )," +
                     " FOREIGN KEY (address_id) REFERENCES ADDRESSES(ID))";
+
+            stmt.executeUpdate(sql);
+
+
+            sql = "CREATE TABLE PRODUCTS_EX " +
+                    "(id INTEGER not NULL AUTO_INCREMENT, " +
+                    " name VARCHAR(255), " +
+                    " description  VARCHAR(255) , " +
+                    " order_id  INTEGER , " +
+                    " PRIMARY KEY ( id )," +
+                    " FOREIGN KEY (order_id) REFERENCES ORDERS_EX(ID))";
 
             stmt.executeUpdate(sql);
 
