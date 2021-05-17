@@ -1,5 +1,6 @@
 package jpa_exercise.model;
 
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -9,12 +10,20 @@ import java.util.List;
 //TODO make the relationship with the products
 //TODO make the relationship with the address
 //TODO map orderDate to order_date column
+@Entity
+@Table(name = "ORDERS_EX")
 public class Order {
 
+    @OneToMany
+    @JoinColumn(name = "PRODUCTS")
     List<Product> products;
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
+    @Column(name = "ORDER_DATE")
     private LocalDate orderDate;
     private Double price;
+    @OneToOne
+    @JoinColumn(name = "address_id", referencedColumnName = "id")
     private Address address;
 
     public Integer getId() {
@@ -55,5 +64,16 @@ public class Order {
 
     public void setAddress(Address address) {
         this.address = address;
+    }
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "products=" + products +
+                ", id=" + id +
+                ", orderDate=" + orderDate +
+                ", price=" + price +
+                ", address=" + address +
+                '}';
     }
 }
